@@ -1,0 +1,79 @@
+[2020-11-21 10:43] Read the first chapter of Operations Research: an Introduction, by Hamdy A. Taha. I'm now working the first chapter's bibliography. The first chapter was an intro to the intro. It is mild confirmation that this is indeed the subject I'm keenly interested in and seem to do in my day-to-day existence, albeit without some level of technical saavy.
+
+[2020-11-21 11:05] @OntheArtofModeling Halfway through the article. I do like the differentiation of learning models and learning the art of modeling. One bit I appreciate and want to note is near the top of the 5th page (B-710) the declaration that there model first or data first dichotomy is a false one. It is a "both and". I have suffered in the past from some version of "analysis paralysis" on this point that need not even be a considering. I will heed this message in the future, and hopefully save a lot of time in the process.
+
+[2020-11-21 11:10] @OntheArtofModeling On the same page as before. Same paragraph even. The author notes how the attitudes of the client toward the situation AND the scientist also are variables in the data. My brain immediately went to "Observer Effect" of quantum mechanics/physics. I don't think the author will elaborate on this further in the article, but it does make me think about how to include such variables in workflow and whether or not it is appropriate to let the client know that they are a variable that is being weighted too. It seems like a potentially negative addition of randomness.
+
+[2020-11-21 11:14] @OntheArtofModeling The frequency of the term "tractable" being used here makes me think it very well may become part of my everyday lexicon.
+
+[2020-11-21 11:27] @OntheArtofModeling "Factor the system problem into simpler problems." Breaking down problems that seem unattainable in aggregate into smaller problems that can be addressed individually is a great notion. From my time in the Bloc coding bootcamp, it strikes me as the same discipline one must have when building computer programs. I guess, it's just a fact of designing anything. It also makes for easier tracking of progress, and aids in the psychology of focusing on the process rather than the outcome. Although the outcome is still important, you have tangible things to address procedurally that will get you there eventually.
+
+[2020-11-21 11:36] @OntheArtofModeling "Establish a clear statement of the deductive objectives." Have your objectives clearly defined from the jump, but understand that they may change over time based on new data. They may also prove your ultimate objective
+unviable.
+
+[2020-11-21 11:51] @OntheArtofModeling "Consider a specific numerical instance of the problem." By working on a specific example of the problem, you may find that hte problem can be easily generalized (or not). You also will get a sense of whether or not this problem or sub-problem needs to be broken down into more simple problems. If it is a solvable thing, then you "Establish some symbols". Abstract the problem so that it may be generalized for all instances in the model.
+
+[2020-11-21 12:06] @OntheArtofModeling "If a tractable model is obtained, enrich it. Otherwise, simplify." Once you "solve" the problem with an abstracted equation, you may choose to make it more complex to more closely simulate reality or you may choose to further simplify it to give a more consistent answer with whatever assumptions you include.
+
+[2020-11-21 12:56] @InsightsOnModelingFromADozenExperts Starting a new article from the first chapter bibliography of @OperationsResearchAnIntroduction . From reading the introduction of the article, it seems there are a dozen experts who's collective knowledge shown through individual stories will display the field of OR/MS and where it should go.
+
+[2020-11-21 13:08] @InsightsOnModelingFromADozenExperts The profile of the consesus is something worth taking to heart. The experts "...pursue specific objectives toward fundamental changes in complex, existing, systems." That seems important to understand. It tells you the profession, at the highest level, is tied to solving real problems in environments that are already existing and moving. There is extensive computation. The models are developed over long periods of time and are heavily influenced by constant contact with the client. And lastly, that they develop mutliple alternative models using the same process as the main model.
+
+[2020-11-21 13:42] @InsightsOnModelingFromADozenExperts I've gotten up to implications to the field, which is just before the data tables.
+- Don't forget craft skills (the proverbial "soft" skills)
+- Don't forget model assessment (are you using the right tool for the job? How do you know?)
+- Don't forget the client (you are solving someone else's problem, after all)
+
+Those were the first few. I then got distracted once i saw the data tables...
+
+[2020-11-21 13:53] @OperationsResearchAnIntroduction Chapter 2 starts by going over 2 variable LP problems. Having just read all the articles in the bibliography from chapter 1, it makes me wonder how much this is going to focus on the gaps in curriculum that were elucidated by some of those articles. Having read them, I'll have to reassess some of the variables I have on my grad school grading rubric.
+
+[2020-11-21 14:06] @OperationsResearchAnIntroduction Just finished 2.2.1, which was a demonstration of the simplex method with the stated takeaway to be the insight that "The optimimum solution of an LP, when it exists, is always associated with a corner point..." On to the next part.
+
+[2020-11-21 14:50] @OperationsResearchAnIntroduction Decided to also document the GNU Octave code I use as I go along through the book as well. So for the "Reddy Mikks" model. I used the following code:
+f = [5, 4]';
+A = [6, 4; 1, 2; -1, 1];
+b = [24; 6; 1];
+lb = [0, 0]';
+ub = [Inf, 2]';
+ctype = "UUU";
+vartype = "CC";
+s = -1
+
+param.msglev = 1;
+param.itlim = 100;
+
+
+glpk (f, A, b, lb, ub, ctype, vartype, s)
+
+
+___
+
+Running that gets you this:
+[xmin, fmin, status, extra] = glpk (f, A, b, lb, ub, ctype, vartype, s)
+xmin =
+
+   3.0000
+   1.5000
+
+fmin =  21
+status = 0
+extra =
+
+  scalar structure containing the fields:
+
+    lambda =
+
+       0.75000
+       0.50000
+       0.00000
+
+    redcosts =
+
+       0
+       0
+
+    time = 0
+    status =  5
+
+Which is the correct answer as demonstrated in the book.
